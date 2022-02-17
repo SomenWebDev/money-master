@@ -3,7 +3,7 @@ function getInputValue(inputId) {
   const inputField = document.getElementById(inputId);
   const inputBudgetText = inputField.value;
   const budgetValue = parseInt(inputBudgetText);
-  inputField.value = "";
+  //   inputField.value = "";
 
   return budgetValue;
 }
@@ -15,14 +15,22 @@ function getSavingValue() {
   const savingsAmount = parseInt(savingsText);
   let currentSavings = (incomeAmount * savingsAmount) / 100;
   document.getElementById("saving-total").innerText = currentSavings;
+  const previousBalance = document.getElementById("balance-total");
+  const previousBalanceText = previousBalance.innerText;
+  const currentBalance = parseInt(previousBalanceText);
+  const remainingBalance = currentBalance - currentSavings;
+  document.getElementById("remaining-balance").innerText = remainingBalance;
 
-  console.log(savingsAmount);
+  console.log(currentBalance);
 }
 
 document
   .getElementById("expenditure-calculator")
   .addEventListener("click", function () {
     const income = getInputValue("income-input");
+    if (isNaN(income) || income < 0) {
+      alert("please enter a valid number");
+    }
 
     const foodExpense = getInputValue("food-expense");
 
