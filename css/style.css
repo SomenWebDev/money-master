@@ -1,0 +1,10 @@
+html,
+body {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.form-area {
+  background: #f8f8f8;
+  border-radius: 5px;
+  /* padding-left: 50px; */
+}
