@@ -7,21 +7,22 @@ function getInputValue(inputId) {
 
   return budgetValue;
 }
+// to get the saving amount and remaining balanced value
 function getSavingValue() {
   const incomeAmount = getInputValue("income-input");
-  console.log(incomeAmount);
+
   const savingsInput = document.getElementById("savings-input");
   const savingsText = savingsInput.value;
   const savingsAmount = parseInt(savingsText);
+  //   calculate savings
   let currentSavings = (incomeAmount * savingsAmount) / 100;
   document.getElementById("saving-total").innerText = currentSavings;
   const previousBalance = document.getElementById("balance-total");
   const previousBalanceText = previousBalance.innerText;
   const currentBalance = parseInt(previousBalanceText);
+  //   calculate remaining balance
   const remainingBalance = currentBalance - currentSavings;
   document.getElementById("remaining-balance").innerText = remainingBalance;
-
-  console.log(currentBalance);
 }
 
 document
@@ -33,14 +34,26 @@ document
     }
 
     const foodExpense = getInputValue("food-expense");
+    if (isNaN(foodExpense) || foodExpense < 0) {
+      alert("please enter a valid number");
+    }
 
     const rentExpense = getInputValue("rent-expense");
+    if (isNaN(rentExpense) || rentExpense < 0) {
+      alert("please enter a valid number");
+    }
 
     const clothExpense = getInputValue("cloth-expense");
+    if (isNaN(clothExpense) || clothExpense < 0) {
+      alert("please enter a valid number");
+    }
 
     // calculate expenses
     const totalExpense = foodExpense + rentExpense + clothExpense;
     document.getElementById("total-expense").innerText = totalExpense;
+    if (totalExpense > income) {
+      alert("You dont have enough money.");
+    }
 
     // calculate balance
     const balance = income - totalExpense;
