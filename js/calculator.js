@@ -1,30 +1,27 @@
+// to get the input value of income and expenses
+function getInputValue(inputId) {
+  const inputField = document.getElementById(inputId);
+  const inputBudgetText = inputField.value;
+  const budgetValue = parseInt(inputBudgetText);
+  inputField.value = "";
+
+  return budgetValue;
+}
 document
   .getElementById("expenditure-calculator")
   .addEventListener("click", function () {
-    const incomeInput = document.getElementById("income-input");
-    const incomeText = incomeInput.value;
-    const incomeAmount = parseInt(incomeText);
-    incomeInput.value = "";
+    const income = getInputValue("income-input");
 
-    const foodExpense = document.getElementById("food-expense");
-    const foodExpenseText = foodExpense.value;
-    console.log(foodExpenseText);
-    foodExpenseAmount = parseInt(foodExpenseText);
-    foodExpense.value = "";
+    const foodExpense = getInputValue("food-expense");
 
-    const rentExpense = document.getElementById("rent-expense");
-    const rentExpenseText = rentExpense.value;
-    const rentExpenseAmount = parseInt(rentExpenseText);
-    console.log(rentExpenseAmount);
-    rentExpense.value = "";
+    const rentExpense = getInputValue("rent-expense");
 
-    const clothExpense = document.getElementById("cloth-expense");
-    const clothExpenseText = clothExpense.value;
-    const clothExpenseAmount = parseInt(clothExpenseText);
-    clothExpense.value = "";
-    const totalExpense =
-      foodExpenseAmount + rentExpenseAmount + foodExpenseAmount;
+    const clothExpense = getInputValue("cloth-expense");
+
+    // calculate expenses
+    const totalExpense = foodExpense + rentExpense + clothExpense;
     document.getElementById("total-expense").innerText = totalExpense;
-    const balance = incomeAmount - totalExpense;
+    // calculate balance
+    const balance = income - totalExpense;
     document.getElementById("balance").innerText = balance;
   });
