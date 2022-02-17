@@ -7,6 +7,17 @@ function getInputValue(inputId) {
 
   return budgetValue;
 }
+function getSavingValue() {
+  const incomeAmount = getInputValue("income-input");
+  console.log(incomeAmount);
+  const savingsInput = document.getElementById("savings-input");
+  const savingsText = savingsInput.value;
+  const savingsAmount = parseInt(savingsText);
+  let currentSavings = (incomeAmount * savingsAmount) / 100;
+  document.getElementById("saving-total").innerText = currentSavings;
+
+  console.log(savingsAmount);
+}
 
 document
   .getElementById("expenditure-calculator")
@@ -22,12 +33,13 @@ document
     // calculate expenses
     const totalExpense = foodExpense + rentExpense + clothExpense;
     document.getElementById("total-expense").innerText = totalExpense;
+
     // calculate balance
     const balance = income - totalExpense;
-    document.getElementById("balance").innerText = balance;
+    document.getElementById("balance-total").innerText = balance;
   });
 document
   .getElementById("savings-calculator")
   .addEventListener("click", function () {
-    console.log("clicked");
+    getSavingValue();
   });
