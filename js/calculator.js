@@ -7,6 +7,7 @@ function getInputValue(inputId) {
 
   return budgetValue;
 }
+
 document
   .getElementById("expenditure-calculator")
   .addEventListener("click", function () {
@@ -24,4 +25,9 @@ document
     // calculate balance
     const balance = income - totalExpense;
     document.getElementById("balance").innerText = balance;
+  });
+document
+  .getElementById("savings-calculator")
+  .addEventListener("click", function () {
+    console.log("clicked");
   });
