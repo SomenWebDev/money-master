@@ -31,21 +31,25 @@ document
     const income = getInputValue("income-input");
     if (isNaN(income) || income < 0) {
       alert("please enter a valid number");
+      return;
     }
 
     const foodExpense = getInputValue("food-expense");
     if (isNaN(foodExpense) || foodExpense < 0) {
       alert("please enter a valid number");
+      return;
     }
 
     const rentExpense = getInputValue("rent-expense");
     if (isNaN(rentExpense) || rentExpense < 0) {
       alert("please enter a valid number");
+      return;
     }
 
     const clothExpense = getInputValue("cloth-expense");
     if (isNaN(clothExpense) || clothExpense < 0) {
       alert("please enter a valid number");
+      return;
     }
 
     // calculate expenses
@@ -53,9 +57,10 @@ document
     document.getElementById("total-expense").innerText = totalExpense;
     if (totalExpense > income) {
       alert("You dont have enough money.");
+      return;
     }
 
-    // calculate balance
+    // calculate sssss
     const balance = income - totalExpense;
     document.getElementById("balance-total").innerText = balance;
   });
